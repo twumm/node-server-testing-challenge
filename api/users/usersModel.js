@@ -10,7 +10,8 @@ module.exports = {
 
 
 async function insert(user) {
-  return null;
+  const [id] = await db('users').insert(user);
+  return db('users').where({ id }).first();
 }
 
 async function update(id, changes) {
@@ -18,11 +19,13 @@ async function update(id, changes) {
 }
 
 function remove(id) {
-  return null;
+  return db('users')
+    .where({ id })
+    .del();
 }
 
 function getAll() {
-  return null;
+  return db('users');
 }
 
 function findById(id) {
