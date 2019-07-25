@@ -13,3 +13,14 @@ describe('server', () => {
       })
   })
 })
+
+describe('create user', () => {
+  it('[POST] /api/users works', () => {
+    return request(server)
+      .post('/api/users')
+      .expect(201)
+      .then(res => {
+        expect(res.body).toEqual({ content: 'up' })
+      })
+  })
+})
