@@ -14,13 +14,13 @@ describe('server', () => {
   })
 })
 
-describe('create user', () => {
-  it('[POST] /api/users works', () => {
+describe('get all users', () => {
+  it('[GET] /api/users works', () => {
     return request(server)
-      .post('/api/users')
-      .expect(201)
+      .get('/api/users')
+      .expect(200)
       .then(res => {
-        expect(res.body).toEqual({ content: 'up' })
+        expect(res.body).toBeInstanceOf(Array);
       })
   })
 })
